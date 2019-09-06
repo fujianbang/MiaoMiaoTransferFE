@@ -13,7 +13,7 @@
             </div>
             <div class="content-main">
                 <div class="content-main-card content-main-card_left">
-                    <div ref="refLeftCard" class="content-main-card-button-com">
+                    <div class="content-main-card-button-com animated" :class="{bounceOutLeft: animateStatus===1}">
                         <el-upload
                             action=""
                             :show-file-list="false"
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="content-main-card content-main-card_right">
-                    <div ref="refRightCard" class="content-main-card-button-com">
+                    <div class="content-main-card-button-com animated" :class="{bounceOutRight: animateStatus===1}">
                         <span slot="trigger" class="miao-button">取件码</span>
                     </div>
                 </div>
@@ -38,16 +38,14 @@ import logo from '@/assets/logo.png'
 export default {
     data() {
         return {
-            logo
+            logo,
+            animateStatus: 0
         }
     },
     methods: {
         handleFileChange(file, fileList) {
             // 调出上传列表
-            const leftCard = this.$refs['refLeftCard']
-            const rightCard = this.$refs['refRightCard']
-            leftCard.style.transform = "translate(calc(-20vw - 230px))"
-            rightCard.style.transform = "translate(calc(20vw + 230px))"
+            this.animateStatus = 1
         }
     }
 }
