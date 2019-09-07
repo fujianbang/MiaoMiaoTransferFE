@@ -1,80 +1,132 @@
 .wrap {
-    overflow-x: hidden;
-    &-background {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+  overflow-x: hidden;
+  &-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+  }
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  &-top {
+    margin-top: 20px;
+    padding: 0 20px;
     display: flex;
-    flex-direction: column;
-    &-top {
-        margin-top: 20px;
-        padding: 0 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .logo {
-            width: 66px;
-            height: 66px;
-        }
-        &-right-bar {
-            display: flex;
-            align-items: center;
-            * {
-                margin-left: 20px;
-            }
-        }
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      width: 66px;
+      height: 66px;
     }
-    &-main {
-        display: flex;
-        justify-content: space-between;
-        &-card {
-            @custom-button: span.upload-custom-button;
-            display: inline-block;
-            margin-top: 30vh;
-            &_left {
-                margin-left: 20vw;
-                span.miao-button:hover {
-                    transform: translateX(-20px);
-                }
-            }
-            &_right {
-                margin-right: 20vw;
-                span.miao-button:hover {
-                    transform: translateX(20px);
-                }
-            }
-            &-button-com {
-                transition: 1s;
-            }
-            span.miao-button {
-                @height: 60px;
-                display: block;
-                position: relative;
-                width: 230px;
-                height: @height;
-                border-radius: @height / 2;
-                text-align: center;
-                line-height: @height;
-                font-size: 24px;
-                font-weight: bold;
-                background-color: #fff;
-                box-shadow: 0 0 12px 0 rgba(0,0,0,.1), 0 10px 30px 0 rgba(0,0,0,.2);
-                transition: .5s;
-                cursor: pointer;
-                &:hover {
-                    color: #67c13b;
-                }
-            }
-        }
+    &-right-bar {
+      display: flex;
+      align-items: center;
+      * {
+        margin-left: 20px;
+      }
     }
+  }
+  &-main {
+    display: flex;
+    justify-content: space-between;
+    &-card {
+      @custom-button: span.upload-custom-button;
+      display: inline-block;
+      margin-top: 30vh;
+      &_left {
+        margin-left: 20vw;
+        span.miao-button:hover {
+          transform: translateX(-20px);
+        }
+      }
+      &_right {
+        margin-right: 20vw;
+        span.miao-button:hover {
+          transform: translateX(20px);
+        }
+      }
+      &-button-com {
+        transition: 1s;
+      }
+      span.miao-button {
+        @height: 60px;
+        display: block;
+        position: relative;
+        width: 230px;
+        height: @height;
+        border-radius: @height / 2;
+        text-align: center;
+        line-height: @height;
+        font-size: 24px;
+        font-weight: bold;
+        background-color: #fff;
+        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.1),
+          0 10px 30px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.5s;
+        cursor: pointer;
+        &:hover {
+          color: #67c13b;
+        }
+      }
+    }
+    &-upload-card {
+      @width: 280px;
+      @height: 450px;
+      position: fixed;
+      top: calc(50% - @height / 2);
+      left: calc(50% - @width / 2);
+      width: @width;
+      height: @height;
+      border-radius: 5px;
+      background: #fff;
+      color: #353535;
+      .file-area {
+        height: 200px;
+        border-bottom: 1px solid red;
+        .file-list {
+          margin-top: 5px;
+          .file-item {
+            font-size: 14px;
+            border-bottom: 1px solid #e8ebed;
+            margin: 0 15px;
+            padding: 5px 0;
+            &-base {
+              display: flex;
+              align-items: center;
+              span {
+                &.icon {
+                  width: 16px;
+                  margin-right: 5px;
+                  color: #67c13b;
+                }
+                &.name {
+                    flex: 2;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                &.size {
+                    flex: 1.25;
+                    font-size: 12px;
+                    text-align: right;
+                }
+                &.delete {
+                    width: 16px;
+                    margin-left: 6px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
