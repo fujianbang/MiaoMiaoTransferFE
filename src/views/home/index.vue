@@ -37,7 +37,7 @@
             class="content-main-card-button-com animated"
             :class="{bounceOutRight: animateStatus===1}"
           >
-            <span slot="trigger" class="miao-button">取件码</span>
+            <span slot="trigger" class="miao-button" @click="downloadHandler">取件码</span>
           </div>
         </div>
         <!-- 上传信息卡 -->
@@ -121,6 +121,28 @@ export default {
             // TODO
           }
         });
+    },
+    downloadHandler() {
+      axios({
+        method: "get",
+        url: "/api/download",
+        responseType: "blob"
+      }).then(res => {
+        if (!res) {
+          return;
+        }
+        const filename = res.headers["content-disposition"].match(
+          /(?<=(filename=))(.*)/g
+        );
+
+        let url = window.URL.createObjectURL(new Blob([res.data]));
+        let link = document.createElement("a");
+        link.style.display = "none";
+        link.href = url;
+        link.setAttribute("download", filename);
+        document.body.appendChild(link);
+        link.click();
+      });
     }
   }
 };
